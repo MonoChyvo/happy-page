@@ -1,0 +1,41 @@
+.footer {
+  background-color: rgba(18, 18, 18, 0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--color-text-secondary);
+  text-align: center;
+  padding: 0.4rem;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 -2px 20px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+  height: auto;
+  min-height: 30px;
+  overflow: hidden;
+}
+
+.footer p {
+  margin: 0;
+  font-size: 0.75rem;
+  letter-spacing: 0.3px;
+  font-family: var(--font-secondary);
+  line-height: 1.2;
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 0.3rem;
+  }
+
+  .footer p {
+    font-size: 0.7rem;
+  }
+}
+
+.footer p span {
+  color: var(--color-primary);
+  font-weight: 600;
+}

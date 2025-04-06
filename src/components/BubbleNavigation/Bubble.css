@@ -1,0 +1,177 @@
+.bubble-link {
+  position: absolute;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: var(--color-text);
+  font-weight: 600;
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem); /* Tamaño de fuente responsivo */
+  text-align: center;
+  box-shadow: var(--shadow-lg), 0 0 15px rgba(140, 111, 255, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  /* Optimizaciones de rendimiento */
+  will-change: transform; /* Reducido a solo transform para mejor rendimiento */
+  user-select: none;
+  z-index: 10;
+  transform-origin: center center; /* Asegurar que la escala se aplique desde el centro */
+  overflow: hidden;
+  font-family: var(--font-secondary);
+  letter-spacing: -0.5px;
+  /* Forzar aceleración por hardware */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  perspective: 1000;
+
+  /* Estado inicial para la aparición gradual */
+  opacity: 0;
+  transform: scale(0);
+}
+
+.bubble-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  opacity: 0.7;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.bubble-link::after {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transform: translateX(-100%);
+  z-index: -1;
+  /* Optimización para aceleración por hardware */
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.bubble-link:hover::after {
+  /* Animación más eficiente con menos frames */
+  animation: shimmer 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Clases para controlar la aparición gradual */
+.bubble-link.visible {
+  opacity: 0.8;
+  transform: translate3d(var(--x), var(--y), 0) scale(1);
+}
+
+/* Efecto de rebote suave al aparecer */
+.bubble-link.visible {
+  animation: bubble-appear 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Estado cuando la animación de movimiento comienza */
+.bubble-link.animation-started {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes bubble-appear {
+  0% {
+    transform: translate3d(var(--x), var(--y), 0) scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: translate3d(var(--x), var(--y), 0) scale(1.1);
+  }
+  100% {
+    transform: translate3d(var(--x), var(--y), 0) scale(1);
+    opacity: 0.8;
+  }
+}
+
+.bubble-link:hover {
+  z-index: 100;
+  /* Aplicamos una escala más sutil con transform3d para forzar aceleración por hardware */
+  transform: translate3d(var(--x), var(--y), 0) scale(1.08) !important;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.bubble-link:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(140, 111, 255, 0.5), var(--shadow-lg);
+}
+
+.bubble-link:active {
+  transform: scale(0.95) !important;
+}
+
+.bubble-text {
+  padding: 0 10px; /* Reducido para pantallas pequeñas */
+  pointer-events: none;
+  position: relative;
+  z-index: 2;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Colores específicos para cada burbuja */
+.bubble-dad-jokes {
+  background-color: rgba(74, 144, 226, 0.7);
+}
+.bubble-dad-jokes:hover {
+  box-shadow: 0 0 20px rgba(74, 144, 226, 0.5), var(--shadow-lg) !important;
+}
+
+.bubble-yee-quote {
+  background-color: rgba(226, 74, 141, 0.7);
+}
+.bubble-yee-quote:hover {
+  box-shadow: 0 0 20px rgba(226, 74, 141, 0.5), var(--shadow-lg) !important;
+}
+
+.bubble-events {
+  background-color: rgba(74, 226, 141, 0.7);
+}
+.bubble-events:hover {
+  box-shadow: 0 0 20px rgba(74, 226, 141, 0.5), var(--shadow-lg) !important;
+}
+
+.bubble-toys {
+  background-color: rgba(226, 200, 74, 0.7);
+}
+.bubble-toys:hover {
+  box-shadow: 0 0 20px rgba(226, 200, 74, 0.5), var(--shadow-lg) !important;
+}
+
+@media (max-width: 768px) {
+  .bubble-link {
+    font-size: clamp(0.8rem, 2vw, 1rem);
+  }
+  .bubble-text {
+    padding: 0 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .bubble-link {
+    font-size: clamp(0.7rem, 1.8vw, 0.9rem);
+  }
+  .bubble-text {
+    padding: 0 6px;
+  }
+}

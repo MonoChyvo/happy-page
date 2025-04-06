@@ -1,0 +1,95 @@
+.bubble-navigation {
+  position: relative;
+  width: 100%;
+  height: calc(
+    100vh - 280px
+  ); /* Altura dinámica basada en la altura de la ventana, reducida para evitar desbordamiento */
+  min-height: 300px; /* Altura mínima reducida para pantallas pequeñas */
+  max-height: 500px; /* Altura máxima reducida para pantallas grandes */
+  overflow: hidden;
+  margin: 0 auto;
+  background-color: rgba(30, 30, 30, 0.5);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  transition: height var(--transition-normal);
+  flex: 1;
+}
+
+.bubble-navigation::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 20% 30%, rgba(140, 111, 255, 0.15) 0%, transparent 35%),
+    radial-gradient(circle at 80% 70%, rgba(255, 101, 132, 0.15) 0%, transparent 35%),
+    radial-gradient(circle at 50% 50%, rgba(74, 226, 141, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bubble-navigation::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(to top, rgba(18, 18, 18, 0.3), transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+
+@media (max-height: 800px) {
+  .bubble-navigation {
+    height: calc(100vh - 240px);
+    min-height: 250px;
+  }
+}
+
+@media (max-height: 600px) {
+  .bubble-navigation {
+    height: calc(100vh - 220px);
+    min-height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .bubble-navigation {
+    height: calc(100vh - 260px);
+    min-height: 220px;
+  }
+}
+
+@media (max-height: 700px) {
+  .bubble-navigation {
+    height: calc(100vh - 200px);
+  }
+}
+
+@media (max-width: 992px) {
+  .bubble-navigation {
+    height: calc(100vh - 230px);
+    max-height: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .bubble-navigation {
+    height: calc(100vh - 210px);
+    max-height: 450px;
+    margin-top: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .bubble-navigation {
+    height: calc(100vh - 200px);
+    max-height: 350px;
+    min-height: 300px;
+  }
+}
