@@ -5,8 +5,9 @@ Este documento registra las tareas pendientes, mejoras planificadas y posibles c
 ## Prioridad Alta
 
 - [ ] Implementar pruebas unitarias para el componente `EnhancedBubbleNavigation`
-- [ ] Optimizar el rendimiento en dispositivos móviles de gama baja
-- [ ] Mejorar la accesibilidad de los elementos de navegación (ARIA, contraste, etc.)
+- [x] Optimizar el rendimiento de las animaciones de burbujas eliminando timeouts innecesarios
+- [x] Mejorar la accesibilidad de los elementos de navegación (atributos ARIA básicos)
+- [ ] Realizar pruebas de rendimiento en dispositivos móviles de gama baja
 
 ## Prioridad Media
 
@@ -31,9 +32,26 @@ Este documento registra las tareas pendientes, mejoras planificadas y posibles c
 
 ## Bugs Conocidos
 
+- [x] ~~Pausas perceptibles en la animación de burbujas debido a timeouts innecesarios~~ (Resuelto)
 - [ ] Ocasionalmente las burbujas pueden salirse de los límites de la pantalla en ciertos dispositivos
 - [ ] El rendimiento puede degradarse en navegadores antiguos
 
+## Tareas Completadas Recientemente
+
+- [x] Implementar una solución completamente nueva de burbujas flotantes utilizando Canvas HTML5
+- [x] Crear un sistema de física para simular movimiento natural de burbujas
+- [x] Implementar sistema de colisiones con los bordes del contenedor
+- [x] Añadir efectos visuales con gradientes para simular burbujas reales
+- [x] Mejorar la interacción con efectos de hover y clic
+- [x] Optimizar el rendimiento utilizando requestAnimationFrame
+- [x] Asegurar que las burbujas sean visibles desde el inicio con alta opacidad
+- [x] Implementar una estructura de código modular y mantenible
+- [x] Utilizar clases para encapsular la lógica de las burbujas
+- [x] Optimizar el renderizado con Canvas para mejor rendimiento
+- [x] Realizar limpieza general del código y eliminar archivos no utilizados
+- [x] Mejorar la estructura del proyecto con archivos CSS específicos
+- [x] Eliminar código redundante y optimizar importaciones
+
 ---
 
-*Última actualización: 1 de mayo de 2025*
+_Última actualización: 17 de mayo de 2025_

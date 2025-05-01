@@ -1,11 +1,11 @@
 import React from 'react'
-import EnhancedBubbleNavigation from '../components/BubbleNavigation/EnhancedBubbleNavigation'
+import FloatingBubbleNavigation from '../components/BubbleNavigation/FloatingBubbleNavigation'
 
 function Home() {
   return (
     <>
-      {/* Renderizamos el componente mejorado de navegación de burbujas */}
-      <EnhancedBubbleNavigation />
+      {/* Renderizamos el componente de burbujas flotantes con Canvas */}
+      <FloatingBubbleNavigation />
     </>
   )
 }
