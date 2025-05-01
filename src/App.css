@@ -1,21 +1,25 @@
 #root {
   display: flex;
   flex-direction: column;
+  height: 100vh;
+  max-height: 100vh;
   min-height: 100vh;
   width: 100%;
   max-width: 100vw;
-  overflow-x: hidden;
+  overflow: hidden;
+  position: relative;
 }
 
 .app {
   display: flex;
   flex-direction: column;
+  height: 100vh;
+  max-height: 100vh;
   min-height: 100vh;
   width: 100%;
   max-width: 100vw;
   position: relative;
-  overflow-x: hidden;
-  overflow-y: hidden; /* Prevenir barras de desplazamiento vertical */
+  overflow: hidden; /* Prevenir cualquier barra de desplazamiento */
 }
 
 .app::before {
@@ -37,7 +41,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: 3.5rem 1.5rem 3.5rem; /* Reducido aún más para evitar desbordamiento */
+  padding: 0 1.5rem; /* Reducido al mínimo para evitar desbordamiento */
   margin-top: 60px; /* Space for fixed navbar */
   text-align: center;
   max-width: 100%;
@@ -46,8 +50,9 @@
   margin-right: auto;
   position: relative;
   z-index: 1;
-  min-height: calc(100vh - 60px); /* Altura mínima para ocupar toda la pantalla menos el navbar */
-  height: 100%;
+  height: calc(100vh - 60px); /* Altura exacta para ocupar toda la pantalla menos el navbar */
+  max-height: calc(100vh - 60px);
+  min-height: calc(100vh - 60px);
   overflow: hidden;
   box-sizing: border-box; /* Asegurar que el padding no aumente el tamaño total */
 }
